@@ -1,0 +1,27 @@
+.enter-city {
+  font-size: 15px;
+  font-style: italic;
+  background: rgba(255, 255, 255);
+}
+
+.search {
+  background: #666f7ef1;
+  border: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 5px;
+  
+}
+.search:hover {
+  opacity: 0.8;
+}
+.current {
+  background: #3b68a1c2;
+  border: none;
+  padding: 6px 10px;
+  color: #fff;
+  border-radius: 5px;
+}
+.current:hover {
+  opacity: 0.8;
+}
