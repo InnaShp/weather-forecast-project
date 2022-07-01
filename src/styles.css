@@ -1,3 +1,13 @@
+h1 {
+  padding-top: 10px;
+  font-size: 45px;
+}
+ul {
+  font-size: 18px;
+  font-style: italic;
+  opacity: 0.8;
+  list-style: none;
+}
 .enter-city {
   font-size: 15px;
   font-style: italic;
