@@ -1,12 +1,35 @@
+body {
+  background-image: url(sky-image.jpg);
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+  font-family: "Poppins", sans-serif;
+}
 h1 {
   padding-top: 10px;
   font-size: 45px;
+}
+h2 {
+  font-size: 80px;
 }
 ul {
   font-size: 18px;
   font-style: italic;
   opacity: 0.8;
   list-style: none;
+}
+.container {
+  margin-top: 100px;
+}
+.card {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #424d5f;;
+  padding: 40px 25px 10px;
+  border: none;
+  box-shadow: 5px 5px 10px rgb(107, 111, 116, 0.5);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  
 }
 .enter-city {
   font-size: 15px;
@@ -35,9 +58,22 @@ ul {
 .current:hover {
   opacity: 0.8;
 }
+.degrees {
+  font-size: 35px;
+  position: relative;
+  bottom: 20px;
+  font-style: italic;
+}
+.celsius, .fahrenheit {
+  text-decoration: none;
+  color: #424d5f;;
+}
+.celsius:hover, .fahrenheit:hover {
+  color: #424d5fab;
+}
 .github-description {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 20px;
   font-size: 13px;
   color: #eaebf7;
 }
