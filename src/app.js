@@ -48,6 +48,8 @@ function showWeather(response) {
       temperature.innerHTML = currentTemperature;
       degrees = "Celsius";
     }
+    celsius.classList.add("active");
+    fahrenheit.classList.remove("active");
   }
 
   function convertFahrenheit(event) {
@@ -63,6 +65,8 @@ function showWeather(response) {
       )}`;
       degrees = "Fahrenheit";
     }
+    celsius.classList.remove("active");
+    fahrenheit.classList.add("active");
   }
 
   let degreesInCelsius1 = document.querySelector("#celsius");

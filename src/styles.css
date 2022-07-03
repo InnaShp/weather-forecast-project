@@ -71,6 +71,9 @@ ul {
 .celsius:hover, .fahrenheit:hover {
   color: #424d5fab;
 }
+.active {
+  color: rgb(58, 58, 160);
+}
 .github-description {
   text-align: center;
   margin-top: 20px;
