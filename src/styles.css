@@ -35,3 +35,17 @@ ul {
 .current:hover {
   opacity: 0.8;
 }
+.github-description {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #eaebf7;
+}
+.github-link {
+  text-decoration: none;
+  color: #eaebf7;
+  text-decoration: underline;
+}
+.github-link:hover {
+  color: #eaebf7bd ;
+}
