@@ -74,6 +74,10 @@ ul {
 .active {
   color: rgb(58, 58, 160);
 }
+.weather-icon {
+  font-size: 20px;
+  margin-button: 30px;
+}
 .github-description {
   text-align: center;
   margin-top: 20px;

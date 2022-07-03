@@ -32,11 +32,14 @@ function showWeather(response) {
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
   let wind = Math.round(response.data.wind.speed);
+  let iconElement = document.querySelector("#icon");
   temperatureElement.innerHTML = currentTemperature;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   city.innerHTML = response.data.name;
   weatherDescription.innerHTML = response.data.weather[0].main;
   humidity.innerHTML = `${response.data.main.humidity}`;
+  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   windSpeed.innerHTML = `${wind}`;
   var degrees = "Celsius";
   function convertCelsius(event) {
