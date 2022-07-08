@@ -93,41 +93,6 @@ function showWeather(response) {
   iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
   windSpeed.innerHTML = `${wind}`;
-  var degrees = "Celsius";
-  function convertCelsius(event) {
-    event.preventDefault();
-    if (degrees === "Celsius") {
-      return;
-    } else {
-      let temperature = document.querySelector("#number-degrees");
-      temperature.innerHTML = currentTemperature;
-      degrees = "Celsius";
-    }
-    celsius.classList.add("active");
-    fahrenheit.classList.remove("active");
-  }
-
-  function convertFahrenheit(event) {
-    event.preventDefault();
-    if (degrees === "Fahrenheit") {
-      return;
-    } else {
-      let temperatureElement = document.querySelector("#number-degrees");
-
-      currentTemperature = Number(currentTemperature);
-      temperatureElement.innerHTML = `${Math.round(
-        (currentTemperature * 9) / 5 + 32
-      )}`;
-      degrees = "Fahrenheit";
-    }
-    celsius.classList.remove("active");
-    fahrenheit.classList.add("active");
-  }
-
-  let degreesInCelsius1 = document.querySelector("#celsius");
-  degreesInCelsius1.addEventListener("click", convertCelsius);
-  let degreesInFahrenheit1 = document.querySelector("#fahrenheit");
-  degreesInFahrenheit1.addEventListener("click", convertFahrenheit);
   getForecast(response.data.coord);
 }
 function searchCity(city) {

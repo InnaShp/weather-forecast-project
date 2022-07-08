@@ -62,22 +62,13 @@ hr {
 .current:hover {
   opacity: 0.8;
 }
-.degrees {
+.celsium {
   font-size: 35px;
   position: relative;
   bottom: 20px;
   font-style: italic;
 }
-.celsius, .fahrenheit {
-  text-decoration: none;
-  color: #424d5f;;
-}
-.celsius:hover, .fahrenheit:hover {
-  color: #424d5fab;
-}
-.active {
-  color: rgb(58, 58, 160);
-}
+
 .weather-icon {
   font-size: 20px;
   margin-button: 30px;
