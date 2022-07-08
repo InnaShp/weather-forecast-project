@@ -17,6 +17,10 @@ ul {
   opacity: 0.8;
   list-style: none;
 }
+hr {
+  margin: 0 auto;
+  opacity: 0.4;
+}
 .container {
   margin-top: 100px;
 }
@@ -77,6 +81,20 @@ ul {
 .weather-icon {
   font-size: 20px;
   margin-button: 30px;
+}
+.weather-forecast {
+  margin: 0 auto;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 15px;
+}
+.next-day-forecast {
+  border-radius: 10px;
+  transition: all 200ms ease-in-out;
+}
+.next-day-forecast:hover {
+  background: #f7feff6e;
+  border-radius: 10px;
 }
 .github-description {
   text-align: center;
