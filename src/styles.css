@@ -10,12 +10,14 @@ h1 {
 }
 h2 {
   font-size: 80px;
+  text-align: left;
 }
 ul {
   font-size: 18px;
   font-style: italic;
   opacity: 0.8;
   list-style: none;
+  text-align: center;
 }
 hr {
   margin: 0 auto;
@@ -73,6 +75,20 @@ hr {
   font-size: 20px;
   margin-button: 30px;
 }
+.specialty-forecasts {
+  text-align: center;
+}
+.specialty-forecasts-element {
+  text-decoration: none;
+  color: #ec6f4c;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 200ms ease-in-out;
+}
+.specialty-forecasts-element:hover {
+  color: #ec6f4cbb;
+  font-size: 22px;
+}
 .weather-forecast {
   margin: 0 auto;
   font-size: 15px;
@@ -82,6 +98,7 @@ hr {
 .next-day-forecast {
   border-radius: 10px;
   transition: all 200ms ease-in-out;
+  
 }
 .next-day-forecast:hover {
   background: #f7feff6e;

@@ -39,36 +39,71 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+      `
+        <div class="col next-day-forecast">
+          <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+          <img
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
+            alt=""
+            width="42"
+          />
+          <div class="weather-forecast-temperatures">
+            <span class="weather-forecast-temperature-max"> ${Math.round(
+              forecastDay.temp.max
+            )}° </span>
+            <span class="weather-forecast-temperature-min"> ${Math.round(
+              forecastDay.temp.min
+            )}° </span>
+          </div>
+        </div>
+      `;
+    } 
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  
+
+}
+
+function displayWeeklyForecast (response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7) {
       forecastHTML =
         forecastHTML +
         `
-      <div class="col-2 next-day-forecast">
-        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-        <img
-          src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
-          }@2x.png"
-          alt=""
-          width="42"
-        />
-        <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> ${Math.round(
-            forecastDay.temp.max
-          )}° </span>
-          <span class="weather-forecast-temperature-min"> ${Math.round(
-            forecastDay.temp.min
-          )}° </span>
-        </div>
-      </div>
-  `;
-    }
+          <div class="col next-day-forecast">
+            <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+            <img
+              src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
+              alt=""
+              width="42"
+            />
+            <div class="weather-forecast-temperatures">
+              <span class="weather-forecast-temperature-max"> ${Math.round(
+                forecastDay.temp.max
+              )}° </span>
+              <span class="weather-forecast-temperature-min"> ${Math.round(
+                forecastDay.temp.min
+              )}° </span>
+            </div>
+          </div>
+        `;
+    };
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
+debugger
 function getForecast(coordinates) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -94,6 +129,13 @@ function showWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   windSpeed.innerHTML = `${wind}`;
   getForecast(response.data.coord);
+  let weekly = document.querySelector("#weekly");
+  weekly.addEventListener("click", function getWeeklyForecast(event) {
+    event.preventDefault();
+    let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeeklyForecast)
+  });
 }
 function searchCity(city) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
@@ -125,4 +167,11 @@ let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", handleSubmit);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
-searchCity("Kyiv");
+searchCity("Lviv");
+
+
+
+
+
+
+
