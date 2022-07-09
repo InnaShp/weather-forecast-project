@@ -146,33 +146,60 @@ function formatHour(timestamp) {
 function displayHourlyForecast (response) {
   let forecast = response.data.hourly;
   let forecastElement = document.querySelector("#forecast");
-  
   let forecastHTML = `<div class="row">`;
   let next = document.querySelector("#next-hours");  
-  next = `<a href="#" class="next-hours"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+  next = `<a href="#" class="next-hours" id="hours"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-bar-down" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zM1 11.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
     </svg></a>`;
-  forecast.forEach(function (forecastDay, index) {
+  forecast.forEach(function (forecastHour, index) {
     if (index < 8 ) {
       forecastHTML =
         forecastHTML +
         `
           <div class="col next-day-forecast">
-            <div class="weather-forecast-date">${formatHour(forecastDay.dt)}</div>
+            <div class="weather-forecast-date">${formatHour(forecastHour.dt)}</div>
             <img
               src="http://openweathermap.org/img/wn/${
-                forecastDay.weather[0].icon
+                forecastHour.weather[0].icon
               }@2x.png"
               alt=""
               width="42"
             />
-            <div class="weather-forecast-temperatures"> ${Math.round(forecastDay.temp)}° </div>
+            <div class="weather-forecast-temperatures"> ${Math.round(forecastHour.temp)}° </div>
           </div>
         `;
     };
   });
+  
   forecastHTML = forecastHTML  + `</div>` + next;
   forecastElement.innerHTML = forecastHTML;
+  let hours = document.querySelector("#hours")
+  hours.addEventListener("click", function handle24HoursForecast(event) {
+    event.preventDefault();
+    let forecast24HoursHTML = `<div class="row">`;
+    forecast.forEach(function show24HoursForecast(forecastHour, index) {
+      if (index < 24 ) {
+        forecast24HoursHTML =
+          forecast24HoursHTML +
+          `
+            <div class="col next-day-forecast">
+              <div class="weather-forecast-date">${formatHour(forecastHour.dt)}</div>
+              <img
+                src="http://openweathermap.org/img/wn/${
+                  forecastHour.weather[0].icon
+                }@2x.png"
+                alt=""
+                width="42"
+              />
+              <div class="weather-forecast-temperatures"> ${Math.round(forecastHour.temp)}° </div>
+            </div>
+          `;
+      };
+    });
+    forecast24HoursHTML = forecast24HoursHTML  + `</div>`;
+    forecastElement.innerHTML = forecast24HoursHTML;
+    
+  });
  
 }
 

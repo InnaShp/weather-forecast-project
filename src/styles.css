@@ -118,3 +118,11 @@ hr {
 .github-link:hover {
   color: #eaebf7bd ;
 }
+.next-hours {
+  color: #424d5f;
+
+}
+.next-hours:hover {
+  color: #424d5fb6;
+
+}
