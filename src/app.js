@@ -39,7 +39,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 4) {
+    if (index < 5) {
       forecastHTML =
         forecastHTML +
       `
@@ -103,11 +103,16 @@ function displayWeeklyForecast (response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-debugger
+
 function getForecast(coordinates) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+}
+function getWeeklyForecast(coordinates) {
+  let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeeklyForecast)
 }
 
 function showWeather(response) {
@@ -120,6 +125,8 @@ function showWeather(response) {
   let windSpeed = document.querySelector("#wind");
   let wind = Math.round(response.data.wind.speed);
   let iconElement = document.querySelector("#icon");
+  let weekly = document.querySelector("#weekly");
+  let fiveDays = document.querySelector("#five-days-forecast");
   temperatureElement.innerHTML = currentTemperature;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   city.innerHTML = response.data.name;
@@ -129,12 +136,15 @@ function showWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   windSpeed.innerHTML = `${wind}`;
   getForecast(response.data.coord);
-  let weekly = document.querySelector("#weekly");
-  weekly.addEventListener("click", function getWeeklyForecast(event) {
+  
+  weekly.addEventListener("click", function handleWeelyForecast(event) {
     event.preventDefault();
-    let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeeklyForecast)
+    getWeeklyForecast(response.data.coord);
+
+  });
+  fiveDays.addEventListener("click", function getFiveDaysForecast(event) {
+    event.preventDefault();
+    getForecast(response.data.coord);
   });
 }
 function searchCity(city) {
