@@ -16,7 +16,7 @@
   <div class="container">
     <div class="card">
       <div class="card-body">
-        <div class="row city-exemple">
+        <div class="row cities">
           <div class="col">
             <a href="#" class="city-name" id="new-york">New York</a>
           </div>
@@ -50,37 +50,35 @@
         <h1 id="city">
           Lviv
         </h1>
-        
-          <div class="row">
-            <div class="col">
-              <h2>
-                <img src="" alt="Clear" id="icon" class="weather-icon"/><span id="number-degrees"> 22 </span><span class="celsium">°C</span>
-              </h2>
-            </div>
-            <div class="col">
-              <ul>
-                <li id="description"></li>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Wind: <span id="wind"></span>km/h</li>
-              </ul>
-            </div>
+        <div class="row">
+          <div class="col">
+            <h2>
+              <img src="" alt="Clear" id="icon" class="weather-icon"/><span id="number-degrees"> 22 </span><span class="celsium">°C</span>
+            </h2>
           </div>
-          <div class="row specialty-forecasts">
-            <div class="col">
-              <a href="#" class="specialty-forecasts-element" id="hourly"> Hourly </a>
-            </div>
-            <div class="col">
-              <a href="#" class="specialty-forecasts-element" id="five-days-forecast"> 5 Days </a>
-            </div>
-            <div class="col">
-              <a href="#" class="specialty-forecasts-element" id="weekend"> Weekend </a>
-            </div>
-            <div class="col">
-              <a href="#" class="specialty-forecasts-element" id="weekly"> Weekly </a>
-            </div>
-            
+          <div class="col">
+            <ul>
+              <li id="description"></li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span>km/h</li>
+            </ul>
           </div>
-          <hr />
+        </div>
+        <div class="row special-forecast">
+          <div class="col">
+            <a href="#" class="forecasts-element" id="hourly"> Hourly </a>
+          </div>
+          <div class="col">
+            <a href="#" class="forecasts-element" id="five-days-forecast"> 5 Days </a>
+          </div>
+          <div class="col">
+            <a href="#" class="forecasts-element" id="weekend"> Weekend </a>
+          </div>
+          <div class="col">
+            <a href="#" class="forecasts-element" id="weekly"> Weekly </a>
+          </div> 
+        </div>
+        <hr />
         <div class="weather-forecast" id="forecast"></div>
         <div  id="next-hours"></div>
       </div>

@@ -21,6 +21,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -33,6 +34,18 @@ function formatDay(timestamp) {
   "Saturday"];
   return days[day];
 }
+
+
+function formatHour(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let hour = date.getHours();
+  let hours = ["00.00","01.00","02.00","03.00","04.00","05.00","06.00",
+  "07.00","08.00","09.00", "10.00","11.00","12.00","13.00", "14.00",
+  "15.00","16.00","17.00","18.00","19.00","20.00","21.00","22.00","23.00"];
+  return hours[hour];
+}
+
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -41,33 +54,32 @@ function displayForecast(response) {
     if (index < 5) {
       forecastHTML =
         forecastHTML +
-      `
-        <div class="col next-day-forecast">
-          <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-          <img
-            src="http://openweathermap.org/img/wn/${
-              forecastDay.weather[0].icon
-            }@2x.png"
-            alt=""
-            width="42"
-          />
-          <div class="weather-forecast-temperatures">
-            <span class="weather-forecast-temperature-max"> ${Math.round(
-              forecastDay.temp.max
-            )}° </span>
-            <span class="weather-forecast-temperature-min"> ${Math.round(
-              forecastDay.temp.min
-            )}° </span>
+        `
+          <div class="col next-day-forecast">
+            <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+            <img
+              src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
+              alt=""
+              width="42"
+            />
+            <div class="weather-forecast-temperatures">
+              <span class="weather-forecast-temperature-max"> ${Math.round(
+                forecastDay.temp.max
+              )}° </span>
+              <span class="weather-forecast-temperature-min"> ${Math.round(
+                forecastDay.temp.min
+              )}° </span>
+            </div>
           </div>
-        </div>
-      `;
+        `;
     } 
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  
-
 }
+
 
 function displayWeeklyForecast (response) {
   let forecast = response.data.daily;
@@ -103,6 +115,7 @@ function displayWeeklyForecast (response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+
 function displayWeekendForecast (response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -136,13 +149,8 @@ function displayWeekendForecast (response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-function formatHour(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let hour = date.getHours();
-  let hours = ["00.00","01.00","02.00","03.00","04.00","05.00","06.00","07.00","08.00","09.00", "10.00","11.00",
-  "12.00","13.00","14.00","15.00","16.00","17.00","18.00","19.00","20.00","21.00","22.00","23.00"];
-  return hours[hour];
-}
+
+
 function displayHourlyForecast (response) {
   let forecast = response.data.hourly;
   let forecastElement = document.querySelector("#forecast");
@@ -170,7 +178,6 @@ function displayHourlyForecast (response) {
         `;
     };
   });
-  
   forecastHTML = forecastHTML  + `</div>` + next;
   forecastElement.innerHTML = forecastHTML;
   let hours = document.querySelector("#hours")
@@ -198,31 +205,37 @@ function displayHourlyForecast (response) {
     });
     forecast24HoursHTML = forecast24HoursHTML  + `</div>`;
     forecastElement.innerHTML = forecast24HoursHTML;
-    
   });
- 
 }
+
 
 function getForecast(coordinates) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+
+
 function getWeeklyForecast(coordinates) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeeklyForecast)
 }
+
+
 function getWeekendForecast(coordinates) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeekendForecast)
 }
+
+
 function getHourlyForecast(coordinates) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayHourlyForecast)
 }
+
 
 function showWeather(response) {
   let currentTemperature = Math.round(response.data.main.temp);
@@ -264,11 +277,14 @@ function showWeather(response) {
     getHourlyForecast(response.data.coord);
   });
 }
+
+
 function searchCity(city) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }
+
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -276,16 +292,18 @@ function handleSubmit(event) {
   searchCity(city.value);
 }
 
+
 function searchLocation(position) {
   let apiKey = "9ad78e7db9272efcf0a75aa55efdcd5a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
-  
 }
+
 
 function currentGeolocation() {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
 
 let currentButton = document.querySelector("#current-button");
 let searchButton = document.querySelector("#search-button");
@@ -295,6 +313,7 @@ let cityLondon = document.querySelector("#london");
 let cityParis = document.querySelector("#paris");
 let cityTokyo = document.querySelector("#tokyo");
 let cityKyiv = document.querySelector("#kyiv");
+
 
 currentButton.addEventListener("click", currentGeolocation);
 searchButton.addEventListener("click", handleSubmit);
@@ -319,4 +338,6 @@ cityKyiv.addEventListener("click", function (event) {
   event.preventDefault();
   searchCity("Kyiv");
 });
+
+
 searchCity("Lviv");

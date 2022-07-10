@@ -37,7 +37,7 @@ hr {
   backdrop-filter: blur(2px);
   
 }
-.city-exemple {
+.cities {
   text-align: center;
   margin-bottom: 15px;
 }
@@ -83,22 +83,20 @@ hr {
   bottom: 20px;
   font-style: italic;
 }
-
 .weather-icon {
   font-size: 20px;
-  margin-button: 30px;
 }
-.specialty-forecasts {
+.special-forecast {
   text-align: center;
 }
-.specialty-forecasts-element {
+.forecasts-element {
   text-decoration: none;
   color: #ec6f4c;
   font-weight: bold;
   font-size: 20px;
   transition: all 200ms ease-in-out;
 }
-.specialty-forecasts-element:hover {
+.forecasts-element:hover {
   color: #ec6f4cbb;
   font-size: 22px;
 }
@@ -111,7 +109,6 @@ hr {
 .next-day-forecast {
   border-radius: 10px;
   transition: all 200ms ease-in-out;
-  
 }
 .next-day-forecast:hover {
   background: #f7feff6e;
@@ -133,11 +130,9 @@ hr {
 }
 .next-hours {
   color: #424d5f;
-
 }
 .next-hours:hover {
   color: #424d5fb6;
-
 }
 .weather-forecast-date {
   padding: 15px 5px 0px;
