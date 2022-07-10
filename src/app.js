@@ -157,7 +157,7 @@ function displayHourlyForecast (response) {
         forecastHTML +
         `
           <div class="col next-day-forecast">
-            <div class="weather-forecast-date">${formatHour(forecastHour.dt)}</div>
+            <div class="hourly-weather-forecast-date">${formatHour(forecastHour.dt)}</div>
             <img
               src="http://openweathermap.org/img/wn/${
                 forecastHour.weather[0].icon
@@ -183,7 +183,7 @@ function displayHourlyForecast (response) {
           forecast24HoursHTML +
           `
             <div class="col next-day-forecast">
-              <div class="weather-forecast-date">${formatHour(forecastHour.dt)}</div>
+              <div class="hourly-weather-forecast-date">${formatHour(forecastHour.dt)}</div>
               <img
                 src="http://openweathermap.org/img/wn/${
                   forecastHour.weather[0].icon

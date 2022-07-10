@@ -126,3 +126,8 @@ hr {
   color: #424d5fb6;
 
 }
+.hourly-weather-forecast-date {
+  padding: 15px 15px 10px;
+  color: #4d4892e8;
+  font-weight: bold;
+}
