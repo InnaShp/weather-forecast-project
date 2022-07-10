@@ -8,7 +8,6 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   let days = [
     "Sunday",
     "Monday",
@@ -140,7 +139,8 @@ function displayWeekendForecast (response) {
 function formatHour(timestamp) {
   let date = new Date(timestamp * 1000);
   let hour = date.getHours();
-  let hours = ["00.00","01.00","02.00","03.00","04.00","05.00","06.00","07.00","08.00","09.00", "10.00","11.00","12.00","13.00","14.00","15.00","16.00","17.00","18.00","19.00","20.00","21.00","22.00","23.00"];
+  let hours = ["00.00","01.00","02.00","03.00","04.00","05.00","06.00","07.00","08.00","09.00", "10.00","11.00",
+  "12.00","13.00","14.00","15.00","16.00","17.00","18.00","19.00","20.00","21.00","22.00","23.00"];
   return hours[hour];
 }
 function displayHourlyForecast (response) {
@@ -288,17 +288,35 @@ function currentGeolocation() {
 }
 
 let currentButton = document.querySelector("#current-button");
-currentButton.addEventListener("click", currentGeolocation);
-
 let searchButton = document.querySelector("#search-button");
-searchButton.addEventListener("click", handleSubmit);
 let searchForm = document.querySelector("#search-form");
+let cityNewYork = document.querySelector("#new-york");
+let cityLondon = document.querySelector("#london");
+let cityParis = document.querySelector("#paris");
+let cityTokyo = document.querySelector("#tokyo");
+let cityKyiv = document.querySelector("#kyiv");
+
+currentButton.addEventListener("click", currentGeolocation);
+searchButton.addEventListener("click", handleSubmit);
 searchForm.addEventListener("submit", handleSubmit);
+cityNewYork.addEventListener("click", function (event) {
+  event.preventDefault();
+  searchCity("New York");
+});
+cityLondon.addEventListener("click", function (event) {
+  event.preventDefault();
+  searchCity("London");
+});
+cityParis.addEventListener("click", function (event) {
+  event.preventDefault();
+  searchCity("Paris");
+});
+cityTokyo.addEventListener("click", function (event) {
+  event.preventDefault();
+  searchCity("Tokyo");
+});
+cityKyiv.addEventListener("click", function (event) {
+  event.preventDefault();
+  searchCity("Kyiv");
+});
 searchCity("Lviv");
-
-
-
-
-
-
-

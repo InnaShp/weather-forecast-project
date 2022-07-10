@@ -37,6 +37,19 @@ hr {
   backdrop-filter: blur(2px);
   
 }
+.city-exemple {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.city-name {
+  text-decoration: none;
+  color: #0a3750;
+  font-weight: bolder;
+}
+.city-name:hover {
+  color: #0a3850d3;
+  font-size: large;
+}
 .enter-city {
   font-size: 15px;
   font-style: italic;
