@@ -1,7 +1,7 @@
 body {
-  background-image: url(sky-image.jpg);
+  background-image: url(image.jpg);
   background-repeat: no-repeat;
-  background-size: 200% 200%;
+  background-size: 150% 200%;
   font-family: "Poppins", sans-serif;
 }
 h1 {
@@ -55,7 +55,7 @@ hr {
   opacity: 0.8;
 }
 .current {
-  background: #3b68a1c2;
+  background: #304a5e;
   border: none;
   padding: 6px 10px;
   color: #fff;
@@ -126,8 +126,10 @@ hr {
   color: #424d5fb6;
 
 }
-.hourly-weather-forecast-date {
-  padding: 15px 15px 10px;
-  color: #4d4892e8;
+.weather-forecast-date {
+  padding: 15px 5px 0px;
+  font-weight: bold;
+}
+.weather-forecast-temperature-max {
   font-weight: bold;
 }

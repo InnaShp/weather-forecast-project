@@ -109,7 +109,7 @@ function displayWeekendForecast (response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (formatDay(forecastDay.dt) === "Sunday" || formatDay(forecastDay.dt) === "Saturday" && index < 6) {
+    if (formatDay(forecastDay.dt) === "Saturday" || formatDay(forecastDay.dt) === "Sunday" && index > 0) {
       forecastHTML =
         forecastHTML +
         `
@@ -157,7 +157,7 @@ function displayHourlyForecast (response) {
         forecastHTML +
         `
           <div class="col next-day-forecast">
-            <div class="hourly-weather-forecast-date">${formatHour(forecastHour.dt)}</div>
+            <div class="weather-forecast-date">${formatHour(forecastHour.dt)}</div>
             <img
               src="http://openweathermap.org/img/wn/${
                 forecastHour.weather[0].icon
@@ -183,7 +183,7 @@ function displayHourlyForecast (response) {
           forecast24HoursHTML +
           `
             <div class="col next-day-forecast">
-              <div class="hourly-weather-forecast-date">${formatHour(forecastHour.dt)}</div>
+              <div class="weather-forecast-date">${formatHour(forecastHour.dt)}</div>
               <img
                 src="http://openweathermap.org/img/wn/${
                   forecastHour.weather[0].icon
